@@ -12,7 +12,6 @@ Vapour.plugins.toggleterm.enabled = true
 Vapour.plugins.treesitter.enabled = true
 Vapour.plugins.autopairs.enabled = true
 Vapour.plugins.lsp.enabled = true
-Vapour.plugins.stabline.enabled = true
 Vapour.plugins.staline.enabled = true
 Vapour.plugins.gitsigns.enabled = true
 Vapour.plugins.colorizer.enabled = true
