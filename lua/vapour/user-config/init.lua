@@ -57,7 +57,7 @@ Vapour.plugins.which_key.user_defined.D = {
 Vapour.plugins.user = {
   -- Theme
   {'Mofiqul/dracula.nvim'}, --
-  -- 
+  --
   -- Classic File Tree
   {'preservim/nerdtree'}, --
   --
@@ -67,9 +67,6 @@ Vapour.plugins.user = {
   --
   -- Yank Highlight
   {'machakann/vim-highlightedyank'}, --
-  --
-  -- LSP Pop Info
-  {'glepnir/lspsaga.nvim'}, --
   --
   -- Ruby stuff
   {'vim-ruby/vim-ruby'}, {'tpope/vim-rails'}, {'tpope/vim-bundler'}, {'tpope/vim-rake'},--
