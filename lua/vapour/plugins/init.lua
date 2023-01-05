@@ -97,6 +97,21 @@ return packer.startup(function(use)
     disable = not is_enabled('treesitter'),
     after = 'nvim-treesitter'
   }
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    disable = not is_enabled('treesitter'),
+    after = 'nvim-treesitter'
+  }
+  use {
+    'nvim-treesitter/nvim-treesitter-refactor',
+    disable = not is_enabled('treesitter'),
+    after = 'nvim-treesitter'
+  }
+  use {
+    'nvim-treesitter/playground',
+    disable = not is_enabled('treesitter'),
+    after = 'nvim-treesitter'
+  }
 
   -- Colorschemes
   use { 'rose-pine/neovim', as = 'rose-pine', opt = true }

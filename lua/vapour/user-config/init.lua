@@ -18,32 +18,77 @@ Vapour.plugins.colorizer.enabled = true
 Vapour.plugins.null_ls.enabled = false -- Overriding the configuration that comes with Vapour
 
 
--- Vapour.plugins.treesitter = {
---   enabled = true,
---   ensure_installed = "all",
---   ignore_install = {},
---   indent = {enable = false},
---   highlight = {enable = true},
---   autotag = {enable = true},
---   endwise = {enable = true},
---   rainbow = {enable = true, extended_mode = false, disable = {"html"}},
---   textsubjects = {
---     enable = true,
---     prev_selection = ',', -- (Optional) keymap to select the previous selection
---     keymaps = {
---       ['.'] = 'textsubjects-smart',
---       [';'] = 'textsubjects-container-outer',
---       ['i;'] = 'textsubjects-container-inner',
---     },
---   },
--- }
+Vapour.plugins.treesitter = {
+  enabled = true,
+  ensure_installed = "all",
+  ignore_install = {},
+  indent = { enable = false },
+  autotag = { enable = true },
+  rainbow = { enable = true, extended_mode = false, disable = { "html" } },
+  highlight = {
+    enable = true,
+    disable = { 'latex', 'haskell', 'python' },
+  },
+  endwise = {
+    enable = true,
+  },
+  textsubjects = {
+    enable = true,
+    prev_selection = ',',
+    keymaps = {
+      ['.'] = 'textsubjects-smart',
+      [';'] = 'textsubjects-container-outer',
+      ['i;'] = 'textsubjects-container-inner',
+    },
+  },
+  playground = {
+    enable = true,
+  },
+  refactor = {
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "<leader>r",
+      },
+    },
+  },
+  textobjects = {
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["ab"] = "@block.outer",
+        ["ib"] = "@block.inner",
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["aa"] = "@parameter.outer",
+        ["ia"] = "@parameter.inner",
+      },
+    },
+    move = {
+      enable = true,
+      goto_next_start = {
+        [']m'] = '@function.outer',
+      },
+      goto_previous_start = {
+        ['[m'] = '@function.outer',
+      },
+    },
+  },
+}
 
 -- Vapour Keybindgs -- via "Which-key"
 Vapour.plugins.which_key.user_defined.r = {
   name = "Run",
   e = {":!ruby %<CR>", "Execute Ruby"},
-  b = {":!bundle exec rspec %<CR>", "Bundle exec"},
-  r = {":!rspec . --color --format doc<CR>", "Rspec"},
+  b = {":terminal bundle exec rspec %<CR>", "Bundle exec"},
+  r = {":terminal rspec . --color --format doc<CR>", "Rspec"},
   f = {":Format<CR>", "Format"},
   i = {"m'gg=G''", "Indent"}
 }
@@ -94,14 +139,52 @@ Vapour.plugins.user = {
   {'rafamadriz/friendly-snippets'}, --
   --
   -- Text custom_text_objects
-  {'kana/vim-textobj-user'},
-  {'kana/vim-textobj-line'}, {'kana/vim-textobj-entire'},
-  {'kana/vim-textobj-function'}, {'kana/vim-textobj-indent'},
-  {'vim-scripts/argtextobj.vim'}, --
-  {'thinca/vim-textobj-comment'}, {'thinca/vim-textobj-function-javascript'},
-  {'rhysd/vim-textobj-ruby'}, {'nelstrom/vim-textobj-rubyblock', requires = {'adelarsq/vim-matchit'}},
-  {'whatyouhide/vim-textobj-erb'}, --
-  {'coachshea/vim-textobj-markdown'}, --
+  --{'kana/vim-textobj-user'},
+  --{'kana/vim-textobj-line'}, 
+  --{'kana/vim-textobj-entire'},
+  --{'kana/vim-textobj-function'}, 
+  --{'kana/vim-textobj-indent'},
+  --{'vim-scripts/argtextobj.vim'}, --
+  --{'thinca/vim-textobj-comment'}, 
+  --{'thinca/vim-textobj-function-javascript'},
+  --{'rhysd/vim-textobj-ruby'}, 
+  --{'nelstrom/vim-textobj-rubyblock', requires = {'adelarsq/vim-matchit'}},
+  --{'whatyouhide/vim-textobj-erb'}, --
+  --{'coachshea/vim-textobj-markdown'}, --
+
+  { 'RRethy/nvim-align' },
+  { 'RRethy/nvim-base16' },
+  { 'RRethy/nvim-hotline' },
+  --{ 'RRethy/nvim-shopify-dev' },
+  --{ 'RRethy/nvim-treesitter-endwise' },
+  { 'RRethy/vim-eunuch' },
+  { 'RRethy/vim-illuminate' },
+  { 'RRethy/vim-lacklustertab' },
+  { 'RRethy/vim-tranquille' },
+  --{ 'RRethy/nvim-treesitter-textsubjects' },
+  --{ 'editorconfig/editorconfig-vim' },
+  --{ 'hashivim/vim-terraform' },
+  --{ 'justinmk/vim-dirvish' },
+  --{ 'kyazdani42/nvim-web-devicons' },
+  --{ 'lukas-reineke/indent-blankline.nvim' },
+  { 'mfussenegger/nvim-lint' },
+  --{ 'neovim/nvim-lspconfig' },
+  { 'numToStr/Comment.nvim' },
+  { 'nvim-lua/plenary.nvim' },
+  { 'nvim-lua/popup.nvim' },
+  --{ 'nvim-treesitter/nvim-treesitter' },
+  { 'rcarriga/nvim-notify' }, -- bug with quickfix line,
+  --{ 'romainl/vim-cool' },
+  --{ 'shopify/vim-repoify' },
+  { 'tpope/vim-abolish' },
+  --{ 'tpope/vim-fugitive' },
+  --{ 'tpope/vim-projectionist' },
+  --{ 'tpope/vim-repeat' },
+  --{ 'tpope/vim-rhubarb' },
+  --{ 'tpope/vim-surround' },
+  --{ 'vim-test/vim-test' },
+  --{ 'williamboman/nvim-lsp-installer' },
+  --{ 'windwp/nvim-autopairs' },
   --
   -- Debugger
   {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}

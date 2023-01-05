@@ -1,15 +1,3 @@
---------------------------------------------------------------------------------
--- Note to QUY.  You're not using this file yet, as you don't seem to need it.
---------------------------------------------------------------------------------
---   if client.resolved_capabilities.document_highlight then
---     vim.api.nvim_exec([[
---   augroup lsp_document_highlight
---     autocmd! * <buffer>
---     autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
---     autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
---   augroup END
--- ]], false)
---   end
 Vapour.plugins.lsp.enabled = true
 local lsp_installer = Vapour.utils.plugins.require('nvim-lsp-installer')
 
@@ -105,15 +93,16 @@ local on_attach = function(client, bufnr)
                               opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
-  end
+  -- Note from quy: 'resolved_capabilities' is depcreated as of Nvim 0.8.1
+  -- if client.resolved_capabilities.document_highlight then
+  --   vim.api.nvim_exec([[
+  --     augroup lsp_document_highlight
+  --       autocmd! * <buffer>
+  --       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+  --       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+  --     augroup END
+  --   ]], false)
+  -- end
 end
 
 local debounce_time = 1000

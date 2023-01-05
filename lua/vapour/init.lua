@@ -86,7 +86,47 @@ Vapour = {
           [';'] = 'textsubjects-container-outer',
           ['i;'] = 'textsubjects-container-inner'
         }
-      }
+      },
+      textobjects = {
+        -- select = {
+        --   enable = true,
+        --
+        --   -- Automatically jump forward to textobj, similar to targets.vim
+        --   lookahead = true,
+        --
+        --   keymaps = {
+        --     -- You can use the capture groups defined in textobjects.scm
+        --     ["ab"] = "@block.outer",
+        --     ["ib"] = "@block.inner",
+        --     ["af"] = "@function.outer",
+        --     ["if"] = "@function.inner",
+        --     ["ac"] = "@class.outer",
+        --     ["ic"] = "@class.inner",
+        --     ["aa"] = "@parameter.outer",
+        --     ["ia"] = "@parameter.inner",
+        --   },
+        -- },
+        move = {
+          enable = true,
+          goto_next_start = {
+            [']m'] = '@function.outer',
+          },
+          goto_previous_start = {
+            ['[m'] = '@function.outer',
+          },
+        },
+      },
+      refactor = {
+        smart_rename = {
+          enable = true,
+          keymaps = {
+            smart_rename = "<leader>r",
+          },
+        },
+      },
+      playground = {
+        enable = true,
+      },
     },
     vsnip = { enabled = true },
     telescope = { enabled = true },
